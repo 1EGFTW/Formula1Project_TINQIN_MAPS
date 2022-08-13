@@ -21,7 +21,7 @@ public class GenerateMapsServiceImpl implements GenerateMapsService {
                 .build();
         final LatLng raceCoordinates=new LatLng(raceMapsRequest.getLat(), raceMapsRequest.getLon());
         final StaticMapsRequest mapsRequest=new StaticMapsRequest(geoApiContext);
-        mapsRequest.zoom(12);
+        mapsRequest.zoom(14);
         mapsRequest.center(raceCoordinates);
         mapsRequest.size(new Size(500,500));
         final ImageResult result = mapsRequest.awaitIgnoreError();

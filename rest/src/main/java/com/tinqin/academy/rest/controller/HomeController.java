@@ -23,13 +23,12 @@ public class HomeController {
         this.generateMapsProcessor = generateMapsProcessor;
     }
 
-    @PostMapping(value = "/maps",
-            produces = MediaType.IMAGE_JPEG_VALUE)
+    @PostMapping(value = "/maps"/*,produces = MediaType.IMAGE_JPEG_VALUE*/)
     public ResponseEntity<?> generateMaps(@RequestBody RaceMapsRequest raceMapsRequest){
         Either<Error, RaceMapsResponse> response=generateMapsProcessor.process(raceMapsRequest);
         if(response.isLeft()){
             return ResponseEntity.status(response.getLeft().getCode()).body(response.getLeft().getMessage());
         }
-        return ResponseEntity.status(HttpStatus.OK).body(response.get().getImageData());
+        return ResponseEntity.status(HttpStatus.OK).body(response.get()/*.getImageResult().imageData*/);
     }
 }
