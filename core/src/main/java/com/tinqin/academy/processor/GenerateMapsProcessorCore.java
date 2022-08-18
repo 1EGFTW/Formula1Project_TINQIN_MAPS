@@ -25,7 +25,7 @@ public class GenerateMapsProcessorCore implements GenerateMapsProcessor {
     }
 
     @Override
-    public Either<Error, RaceMapsResponse> process(RaceMapsRequest input) {
+    public Either<Error, RaceMapsResponse> process(final RaceMapsRequest input) {
         return Try.of(()->{
             return  RaceMapsResponse.builder()
                     .imageData(generateMapsService.generate(input).imageData)
