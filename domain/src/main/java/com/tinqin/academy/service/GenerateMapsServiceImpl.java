@@ -8,16 +8,19 @@ import com.google.maps.model.LatLng;
 import com.google.maps.model.Size;
 import com.tinqin.academy.model.RaceMapsRequest;
 import com.tinqin.academy.service.interfaces.GenerateMapsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
 
 @Service
 public class GenerateMapsServiceImpl implements GenerateMapsService {
+    @Value("${googleMapsAPIKey}")
+    private String apiKey;
     @Override
     public ImageResult generate(RaceMapsRequest raceMapsRequest) {
         final GeoApiContext geoApiContext=new GeoApiContext.Builder()
-                .apiKey("AIzaSyCCT3MMUdq_dIIKHS4eif2_1f1nC7c_FWo")
+                .apiKey(apiKey)
                 .build();
         final LatLng raceCoordinates=new LatLng(raceMapsRequest.getLat(), raceMapsRequest.getLon());
         final StaticMapsRequest mapsRequest=new StaticMapsRequest(geoApiContext);

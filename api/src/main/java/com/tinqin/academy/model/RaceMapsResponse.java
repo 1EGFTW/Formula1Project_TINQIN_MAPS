@@ -11,6 +11,8 @@ import java.awt.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class RaceMapsResponse implements OperationResult {
     private byte[] imageData;
 }
